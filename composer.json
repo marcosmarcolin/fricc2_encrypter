@@ -1,0 +1,26 @@
+{
+  "name": "marcosmarcolin/fricc2_encrypter",
+  "description": "Encrypt your php files using the fricc2 extension.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Marcos Marcolin",
+      "email": "marcolindev@gmail.com",
+      "homepage": "https://www.marcosmarcolin.com.br",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "marcolindev@gmail.com"
+  },
+  "autoload": {
+    "psr-4": {
+      "MarcosMarcolin\\Fricc2Encrypter\\": "src/"
+    }
+  },
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=7.0"
+  }
+}
