@@ -10,4 +10,4 @@ This package aims to facilitate the encryption of your PHP scripts using the [FR
 
 ## Author
 
-Marcolin Marcolin <marcolindev@gmail.com>
+Marcos Marcolin <marcolindev@gmail.com>
