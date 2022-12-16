@@ -11,7 +11,7 @@ use SplFileInfo;
 
 trait Files
 {
-    private function recursiveIterator()
+    protected function recursiveIterator()
     {
         $this->checkDirs();
 
@@ -23,7 +23,7 @@ trait Files
                 continue;
             }
 
-            if ($file->getExtension() === self::EXTENSION_PHP && $file->isReadable()) {
+            if ($file->getExtension() === self::EXTENSION_FILE_PHP && $file->isReadable()) {
                 $path = str_replace($this->dirFrom, '', $file->getPathname());
                 $dirToRelative = $this->dirTo . $path;
                 $output = $this->fricc2Encrypt($file->getPathname(), $dirToRelative);
@@ -32,7 +32,12 @@ trait Files
         }
     }
 
-    private function checkDirs()
+    /**
+     * Perform some validations for the tool to work
+     *
+     * @return void
+     */
+    protected function checkDirs()
     {
         if (!is_dir($this->dirFrom)) {
             throw new InvalidArgumentException('Invalid source directory!');
@@ -46,9 +51,11 @@ trait Files
     }
 
     /**
+     * Encode the file from one directory to another
+     *
      * @return false|string
      */
-    private function fricc2Encrypt(string $from, string $to)
+    protected function fricc2Encrypt(string $from, string $to)
     {
         $dirname = dirname($to);
         if (!is_dir($dirname)) {
@@ -58,10 +65,19 @@ trait Files
         return exec(self::ENCODER_NAME . ' -o ' . $to . ' ' . $from);
     }
 
-    private function analyseOutput($output, $filename)
+    /**
+     * If it fails, save to array
+     *
+     * @param $output
+     * @param $filename
+     * @return void
+     */
+    protected function analyseOutput($output, $filename): void
     {
         if (stripos(strtolower($output), 'error') !== false) {
             $this->faileds[] = $filename;
+        } else {
+            $this->success[] = $filename;
         }
     }
 }

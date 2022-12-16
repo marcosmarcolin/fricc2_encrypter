@@ -14,13 +14,13 @@ final class Encrypter
     use Files, PlatformCheck;
 
     private const ENCODER_NAME = 'fricc2';
-    private const EXTENSION_PHP = 'php';
+    private const EXTENSION_FILE_PHP = 'php';
 
     private string $dirFrom = '';
     private string $dirTo = '';
     private string $encoder;
-
     private array $faileds = [];
+    private array $success = [];
 
     /**
      * @throws Exception
@@ -29,16 +29,32 @@ final class Encrypter
     {
         $this->dirFrom = $dirFrom;
         $this->dirTo = $dirTo;
-        $this->encoder = ($encoder !== '') ? $encoder : self::ENCODER_NAME;
-        $this->check();
+        $this->encoder = $encoder !== '' ? $encoder : self::ENCODER_NAME;
+        $this->performChecks();
     }
 
+    /**
+     * Returns an array of failed files
+     *
+     * @return array
+     */
     public function getFaileds(): array
     {
         return $this->faileds;
     }
 
     /**
+     * Returns an array of success files
+     * @return array
+     */
+    public function getSuccess(): array
+    {
+        return $this->success;
+    }
+
+    /**
+     * Encode php files recursively from one directory to another
+     *
      * @throws Exception
      */
     public function recursiveEncrypt(): bool
