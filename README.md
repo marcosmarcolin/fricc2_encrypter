@@ -16,8 +16,6 @@ By default, it will use the name `fricc2`, but if you installed it with another 
 
 #### To encode only 1 file:
 
-#### To code one directory to another recursively, use:
-
 ```php
 <?php
 
@@ -25,9 +23,26 @@ use MarcosMarcolin\Fricc2Encrypter\Encrypter;
 
 include 'vendor/autoload.php';
 
+$from = __DIR__ . '/src/file.php';
+$to = __DIR__ . '/src/new_file.php';
+
 try {
-    $Encrypter = new Encrypter($dirFrom, $dirDest);
-    $Encrypter->recursiveEncrypt();
+    $Encrypter = new Encrypter($from, $to);
+    $Encrypter->simpleEncrypt(); // true or false
+} catch (Exception $e) {
+    // Any error that occurs will throw an exception.
+    var_dump($e->getMessage());
+}
+```
+
+#### To code one directory to another recursively, use:
+
+```php
+<?php
+
+try {
+    $Encrypter = new Encrypter($from, $to);
+    $Encrypter->recursiveEncrypt(); // true or false
 } catch (Exception $e) {
     // Any error that occurs will throw an exception.
     var_dump($e->getMessage());
@@ -38,6 +53,8 @@ To capture the files that failed or succeeded use:
 
 ```php
 <?php
+
+// Only for recursive encoder
 
 $faileds = $Encrypter->getFaileds()); // array
 $success = $Encrypter->getSuccess()); // array

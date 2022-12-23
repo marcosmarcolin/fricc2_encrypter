@@ -16,8 +16,8 @@ final class Encrypter
     private const ENCODER_NAME = 'fricc2';
     private const EXTENSION_FILE_PHP = 'php';
 
-    private string $dirFrom = '';
-    private string $dirTo = '';
+    private string $from = '';
+    private string $to = '';
     private string $encoder;
     private array $faileds = [];
     private array $success = [];
@@ -25,10 +25,10 @@ final class Encrypter
     /**
      * @throws Exception
      */
-    public function __construct(string $dirFrom, string $dirTo, string $encoder = '')
+    public function __construct(string $from, string $to, string $encoder = '')
     {
-        $this->dirFrom = $dirFrom;
-        $this->dirTo = $dirTo;
+        $this->from = $from;
+        $this->to = $to;
         $this->encoder = $encoder !== '' ? $encoder : self::ENCODER_NAME;
         $this->performChecks();
     }
@@ -61,6 +61,23 @@ final class Encrypter
     {
         try {
             $this->recursiveIterator();
+        } catch (Exception $exception) {
+            throw new Exception($exception->getMessage());
+        }
+
+        return true;
+    }
+
+    /**
+     * Encodes only one file
+     *
+     * @return bool
+     * @throws Exception
+     */
+    public function simpleEncrypt(): bool
+    {
+        try {
+            $this->fricc2Encrypt($this->from, $this->to);
         } catch (Exception $exception) {
             throw new Exception($exception->getMessage());
         }
