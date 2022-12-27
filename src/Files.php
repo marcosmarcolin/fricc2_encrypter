@@ -62,6 +62,10 @@ trait Files
             mkdir($dirname, 0755, true);
         }
 
+        if (!is_readable($from)) {
+            return false;
+        }
+
         return exec(self::ENCODER_NAME . ' -o ' . $to . ' ' . $from);
     }
 

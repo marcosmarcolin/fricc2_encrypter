@@ -22,5 +22,9 @@
   "minimum-stability": "stable",
   "require": {
     "php": ">=7.4"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^2.2",
+    "phpunit/phpunit": "^9.5"
   }
 }

@@ -12,6 +12,16 @@ For the tool to work, you need to have the encoder in `/usr/bin/fricc2` installe
 
 By default, it will use the name `fricc2`, but if you installed it with another name, you can inform it in the constructor of the `Encrypter` class.
 
+## Installation
+
+`composer require marcosmarcolin/fricc2_encrypter`
+
+## Compatibility
+
+Tested only in **Linux** environment: Ubuntu and Debian.
+
+**PHP version >= 7.4.x is required.**
+
 ## How to use
 
 #### To encode only 1 file:
@@ -59,16 +69,6 @@ To capture the files that failed or succeeded use:
 $faileds = $Encrypter->getFaileds()); // array
 $success = $Encrypter->getSuccess()); // array
 ```
-
-## Installation
-
-`composer require marcosmarcolin/fricc2_encrypter`
-
-## Compatibility
-
-Tested only in **Linux** environment: Ubuntu and Debian.
-
-**PHP version >= 7.4.x is required.**
 
 ## Author
 
