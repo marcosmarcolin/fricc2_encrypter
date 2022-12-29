@@ -11,7 +11,8 @@ use Exception;
  */
 final class Encrypter
 {
-    use Files, PlatformCheck;
+    use Files;
+    use PlatformCheck;
 
     private const ENCODER_NAME = 'fricc2';
     private const EXTENSION_FILE_PHP = 'php';

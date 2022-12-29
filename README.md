@@ -70,6 +70,20 @@ $faileds = $Encrypter->getFaileds()); // array
 $success = $Encrypter->getSuccess()); // array
 ```
 
+## Code quality
+
+To check for errors with PHPCS:
+
+```shell
+composer phpcs
+``` 
+
+To automatically correct errors with PHPCS:
+
+```shell
+composer phpcbf
+``` 
+
 ## Author
 
 Marcos Marcolin <marcolindev@gmail.com>

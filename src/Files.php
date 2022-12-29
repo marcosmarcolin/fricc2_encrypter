@@ -11,7 +11,7 @@ use SplFileInfo;
 
 trait Files
 {
-    protected function recursiveIterator()
+    protected function recursiveIterator(): void
     {
         $this->checkDirs();
 
@@ -37,7 +37,7 @@ trait Files
      *
      * @return void
      */
-    protected function checkDirs()
+    protected function checkDirs(): void
     {
         if (!is_dir($this->from)) {
             throw new InvalidArgumentException('Invalid source directory!');
