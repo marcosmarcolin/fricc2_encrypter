@@ -31,7 +31,8 @@
   "scripts": {
     "phpcs": "./vendor/bin/phpcs --standard=PSR12 src",
     "phpcbf": "./vendor/bin/phpcbf --standard=PSR12 src",
-    "phpinsights": "./vendor/bin/phpinsights analyse src"
+    "phpinsights": "./vendor/bin/phpinsights analyse src",
+    "phpinsights-fix": "./vendor/bin/phpinsights analyse src --fix"
   },
   "config": {
     "allow-plugins": {

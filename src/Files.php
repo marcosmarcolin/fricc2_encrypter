@@ -34,17 +34,15 @@ trait Files
 
     /**
      * Perform some validations for the tool to work
-     *
-     * @return void
      */
     protected function checkDirs(): void
     {
-        if (!is_dir($this->from)) {
+        if (! is_dir($this->from)) {
             throw new InvalidArgumentException('Invalid source directory!');
         }
 
-        if (!is_dir($this->to)) {
-            if (!mkdir($this->to, 0755, true)) {
+        if (! is_dir($this->to)) {
+            if (! mkdir($this->to, 0755, true)) {
                 throw new InvalidArgumentException('Invalid destination directory!');
             }
         }
@@ -58,11 +56,11 @@ trait Files
     protected function fricc2Encrypt(string $from, string $to)
     {
         $dirname = dirname($to);
-        if (!is_dir($dirname)) {
+        if (! is_dir($dirname)) {
             mkdir($dirname, 0755, true);
         }
 
-        if (!is_readable($from)) {
+        if (! is_readable($from)) {
             return false;
         }
 
@@ -71,21 +69,17 @@ trait Files
 
     /**
      * If it fails, save to array
-     *
-     * @param string $output
-     * @param $filename
-     * @return void
      */
-    protected function analyseOutput(string $output, $filename): void
+    protected function analyseOutput(string $output, string $filename): void
     {
-        if (!$this->getStatusEncrypt($output)) {
+        if (! $this->getStatusEncrypt($output)) {
             $this->success[] = $filename;
         } else {
             $this->faileds[] = $filename;
         }
     }
 
-    protected function getStatusEncrypt($output): bool
+    protected function getStatusEncrypt(string $output): bool
     {
         return stripos(strtolower($output), 'error');
     }

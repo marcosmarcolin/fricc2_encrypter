@@ -36,8 +36,6 @@ final class Encrypter
 
     /**
      * Returns an array of failed files
-     *
-     * @return array
      */
     public function getFaileds(): array
     {
@@ -46,6 +44,7 @@ final class Encrypter
 
     /**
      * Returns an array of success files
+     *
      * @return array
      */
     public function getSuccess(): array
@@ -72,7 +71,6 @@ final class Encrypter
     /**
      * Encodes only one file
      *
-     * @return bool
      * @throws Exception
      */
     public function simpleEncrypt(): bool

@@ -84,6 +84,18 @@ To automatically correct errors with PHPCS:
 composer phpcbf
 ``` 
 
+To check for errors with PHPInsights:
+
+```shell
+composer phpinsights
+``` 
+
+To automatically correct errors with PHPInsights:
+
+```shell
+composer phpinsights-fix
+``` 
+
 ## Author
 
 Marcos Marcolin <marcolindev@gmail.com>
